@@ -3,212 +3,358 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Smart Cooldown™ — Stop First‑Time Fraud Without Killing Conversions</title>
-  <meta name="description" content="Layer a 24‑hour cooldown and one‑tap email alerts on top of Stripe Radar. Block CVC failures, hold elevated‑risk orders, and approve with confidence. 2–3 day install." />
+  <title>The Debt Protector — Debt Reset Kit</title>
+  <meta name="description" content="Stop debt collectors legally without a lawyer. Download legal‑style letter templates and get instant relief.">
   <style>
     :root{
-      --bg:#0b1020;--panel:#121831;--panel-2:#0f152b;--text:#e8ebf2;--muted:#9aa3b2;--brand:#33f0a6;--brand-d:#1bbf80;--ring:rgba(51,240,166,.2)
+      --bg:#ffffff; /* white */
+      --ink:#0B1727; /* deep navy ink */
+      --muted:#6B7280; /* gray */
+      --brand:#0A2239; /* navy */
+      --accent:#E5B73B; /* gold */
+      --cta:#0E9F6E; /* green */
+      --cta-ink:#ffffff;
+      --danger:#DC2626;
+      --ring: rgba(14,159,110,.25);
+      --radius:16px;
+      --shadow:0 8px 24px rgba(2,6,23,.08);
     }
-    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Inter,Helvetica,Arial,sans-serif}
-    a{color:inherit;text-decoration:none}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji"; color:var(--ink); background:var(--bg);}
+    img{max-width:100%; display:block}
+    a{color:var(--brand); text-decoration:none}
+    .container{max-width:1120px; margin:0 auto; padding:24px}
+    header{position:sticky; top:0; z-index:50; background:rgba(255,255,255,.9); backdrop-filter:saturate(180%) blur(8px); border-bottom:1px solid #eef1f6}
+    .nav{display:flex; align-items:center; justify-content:space-between; gap:16px}
+    .brand{display:flex; align-items:center; gap:12px}
+    .brand .logo{width:40px; height:40px; border-radius:50%; background:var(--brand); display:grid; place-items:center; box-shadow:0 4px 12px rgba(10,34,57,.18)}
+    .brand .logo span{color:var(--accent); font-weight:800}
+    .brand h1{font-size:18px; margin:0}
+    .sticky-cta{display:none}
+    @media(min-width:768px){ .sticky-cta{display:inline-flex; align-items:center; gap:10px; background:var(--cta); color:#fff; padding:10px 16px; border-radius:999px; box-shadow:0 6px 20px rgba(14,159,110,.35); font-weight:700} }
 
-    .container{max-width:1120px;margin:0 auto;padding:0 16px}
-    .btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 16px;border-radius:12px;font-weight:700;border:1px solid transparent;cursor:pointer}
-    .btn-primary{background:var(--brand);color:#0a1020;border-color:var(--brand);}
-    .btn-primary:hover{background:var(--brand-d)}
-    .btn-ghost{background:transparent;border-color:#223055;color:var(--text)}
-    .btn-ghost:hover{background:#1a2547}
+    /* Hero */
+    .hero{padding:40px 0}
+    .grid{display:grid; gap:28px}
+    @media(min-width:900px){ .grid{grid-template-columns:1.2fr .8fr; align-items:center} }
+    .badge{display:inline-flex; align-items:center; gap:8px; background:#F9FAFB; border:1px solid #EEF2F7; color:#0A2239; padding:8px 12px; border-radius:999px; font-weight:700}
+    .headline{font-size:clamp(28px, 3vw, 44px); line-height:1.1; margin:12px 0}
+    .sub{color:var(--muted); font-size:clamp(16px, 2vw, 18px)}
+    .list{margin:18px 0; padding:0; list-style:none}
+    .list li{display:flex; gap:10px; align-items:flex-start; margin:10px 0}
+    .list .tick{color:var(--cta); font-weight:900}
 
-    header{position:sticky;top:0;z-index:50;background:rgba(11,16,32,.8);backdrop-filter:saturate(1.1) blur(8px);border-bottom:1px solid #1f2a4b}
-    header .brand{display:flex;align-items:center;gap:10px}
-    .logo{display:inline-grid;place-items:center;width:32px;height:32px;border-radius:8px;background:var(--brand);color:#0b1020;font-weight:900}
-    nav{display:none;gap:18px;color:var(--muted)}
-    @media(min-width:768px){nav{display:flex}}
+    .card{background:#fff; border:1px solid #EEF2F7; border-radius:var(--radius); box-shadow:var(--shadow); padding:20px}
+    .form label{font-weight:700; font-size:14px}
+    .form input[type="email"]{width:100%; padding:16px 14px; border:1.5px solid #E5E7EB; border-radius:12px; outline:none; font-size:16px;}
+    .form input[type="email"]:focus{border-color:var(--cta); box-shadow:0 0 0 6px var(--ring)}
+    .btn{display:inline-flex; align-items:center; justify-content:center; gap:8px; background:var(--cta); color:var(--cta-ink); border:none; border-radius:12px; padding:14px 18px; font-weight:800; cursor:pointer; width:100%;}
+    .btn.secondary{background:#0A2239;}
+    .hint{color:var(--muted); font-size:12px; margin-top:6px}
+    .trust{display:flex; gap:16px; flex-wrap:wrap; color:#6B7280; font-size:12px; margin-top:10px}
 
-    .hero{padding:64px 0}
-    .badge{display:inline-flex;gap:8px;align-items:center;border:1px solid var(--ring);background:rgba(51,240,166,.06);color:var(--brand);border-radius:999px;padding:6px 10px;font-size:12px;font-weight:700}
-    .title{font-size:34px;line-height:1.15;font-weight:900;margin:12px 0}
-    @media(min-width:640px){.title{font-size:44px}}
-    .lead{color:var(--muted);max-width:720px;margin:0 auto}
-    .cards{display:grid;grid-template-columns:1fr;gap:14px;margin-top:24px}
-    @media(min-width:640px){.cards{grid-template-columns:repeat(3,1fr)}}
-    .card{background:var(--panel);border:1px solid #1e2a4a;border-radius:16px;padding:16px}
+    .progress{margin:12px 0 0; height:6px; background:#F3F4F6; border-radius:999px; overflow:hidden}
+    .progress > span{display:block; height:100%; background:linear-gradient(90deg, var(--accent), #f5d56e); width:33%}
 
-    .video{aspect-ratio:16/9;width:100%;border:1px solid #1e2a4a;border-radius:16px;overflow:hidden;background:#000;margin-top:18px}
+    /* Offer */
+    #offer{display:none; padding:32px 0 20px}
+    .section-title{font-size:clamp(22px,2.5vw,32px); margin:0 0 10px}
+    .price-wrap{display:grid; gap:20px}
+    @media(min-width:900px){ .price-wrap{grid-template-columns:1fr 1fr} }
+    .price-card{position:relative; border:1px solid #eef2f7; border-radius:var(--radius); box-shadow:var(--shadow); padding:20px; background:#fff}
+    .ribbon{position:absolute; top:14px; right:-10px; background:var(--accent); color:#111827; font-weight:800; padding:6px 10px; border-radius:8px}
+    .price{font-size:34px; font-weight:900; color:#0A2239; margin:6px 0}
+    .compare{color:#9CA3AF; text-decoration:line-through; font-weight:700}
+    .timer{display:inline-flex; gap:8px; background:#FFF7ED; color:#93370D; border:1px solid #FED7AA; border-radius:8px; padding:8px 12px; font-weight:800}
+    .value{background:#F9FAFB; border:1px dashed #E5E7EB; padding:10px 12px; border-radius:12px; margin-top:10px; color:#4B5563}
+    .guarantee{display:flex; align-items:center; gap:10px; color:#065F46; background:#ECFDF5; border:1px solid #A7F3D0; padding:10px 12px; border-radius:10px; font-weight:700; margin-top:10px}
 
-    section.block{padding:56px 0}
-    .split{display:grid;grid-template-columns:1fr;gap:16px}
-    @media(min-width:820px){.split{grid-template-columns:repeat(2,1fr)}}
+    .benefits{display:grid; gap:12px; margin:12px 0}
+    .benefits div{display:flex; gap:10px; align-items:flex-start}
 
-    .compare{display:grid;grid-template-columns:1fr;gap:16px}
-    @media(min-width:980px){.compare{grid-template-columns:repeat(2,1fr)}}
+    .stack{margin-top:24px; background:#fff; border:1px solid #eef2f7; border-radius:16px; box-shadow:var(--shadow); padding:16px}
+    .stack h4{margin:0 0 10px}
 
-    .price-grid{display:grid;grid-template-columns:1fr;gap:16px;margin-top:24px}
-    @media(min-width:900px){.price-grid{grid-template-columns:repeat(3,1fr)}}
-    .price{background:linear-gradient(180deg,var(--panel),var(--panel-2));border:1px solid #1e2a4a;border-radius:18px;padding:22px}
-    .price h3{margin:0;font-size:18px}
-    .price .amount{font-size:36px;font-weight:900;margin:10px 0}
-    .chip{display:inline-block;padding:4px 10px;border-radius:999px;background:rgba(51,240,166,.1);border:1px solid var(--ring);color:var(--brand);font-size:12px;font-weight:800}
-    ul.clean{list-style:none;padding:0;margin:12px 0 0;display:grid;gap:8px;color:var(--text)}
-    ul.clean li{display:flex;gap:10px}
-    .muted{color:var(--muted)}
-    .panel{background:var(--panel);border:1px solid #1e2a4a;border-radius:16px;padding:18px}
-    details{background:var(--panel);border:1px solid #1e2a4a;border-radius:14px;padding:14px}
-    details+details{margin-top:10px}
-    summary{cursor:pointer;font-weight:700}
-    footer{border-top:1px solid #1f2a4b;padding:28px 0;color:var(--muted);text-align:center}
+    /* Modal upsell */
+    .modal{position:fixed; inset:0; background:rgba(2,6,23,.55); display:none; place-items:center; z-index:100}
+    .modal .box{background:#fff; border-radius:16px; padding:22px; width:min(560px, 92vw); box-shadow:0 20px 60px rgba(2,6,23,.25)}
+    .modal .actions{display:flex; gap:10px; margin-top:12px; flex-wrap:wrap}
+    .outline{background:#fff; color:#0A2239; border:2px solid #0A2239}
+
+    /* Social proof & FAQ */
+    .proof{padding:12px 0 28px}
+    .quotes{display:grid; gap:16px}
+    @media(min-width:900px){ .quotes{grid-template-columns:1fr 1fr 1fr} }
+    .quote{border:1px solid #eef2f7; border-radius:14px; padding:14px; background:#fff; box-shadow:var(--shadow); color:#374151;}
+    .faq{padding:20px 0 40px}
+    details{border:1px solid #eef2f7; border-radius:12px; padding:12px 14px; background:#fff; margin:8px 0}
+    summary{font-weight:800; cursor:pointer}
+
+    footer{border-top:1px solid #eef2f7; padding:16px 0; color:#6B7280; font-size:12px}
   </style>
 </head>
 <body>
   <header>
-    <div class="container" style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px;">
-      <a class="brand" href="#"><span class="logo">SC</span><strong>Smart Cooldown</strong></a>
-      <nav>
-        <a href="#how">How it works</a>
-        <a href="#compare">Compare</a>
-        <a href="#pricing">Pricing</a>
-        <a href="#book" class="btn btn-primary" style="padding:8px 14px">Book audit</a>
-      </nav>
+    <div class="container nav">
+      <div class="brand">
+        <!-- Replace src with your final logo -->
+        <div class="logo" aria-hidden="true"><span>🛡️</span></div>
+        <h1>The Debt Protector</h1>
+      </div>
+      <a href="#offer" class="sticky-cta">Get Your Kit</a>
     </div>
   </header>
 
-  <section class="hero">
-    <div class="container" style="text-align:center">
-      <div class="badge">24‑hour cooldown + email alerts for Stripe</div>
-      <h1 class="title">Stop first‑time fraud <span style="color:var(--brand)">without killing conversions</span></h1>
-      <p class="lead">Radar detects. We add <b>cooldowns</b>, <b>clean email alerts</b>, and a simple approval flow so risky orders wait 24 hours while good buyers fly through.</p>
-      <div style="margin-top:18px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
-        <a href="#book" class="btn btn-primary">Book a 15‑min Audit</a>
-        <a href="#demo" class="btn btn-ghost">Watch 2‑min Demo</a>
-      </div>
-      <div class="cards">
-        <div class="card" style="text-align:center"><div class="muted" style="text-transform:uppercase;font-size:12px">Avg. chargeback reduction</div><div style="font-size:26px;font-weight:800">25–60%</div></div>
-        <div class="card" style="text-align:center"><div class="muted" style="text-transform:uppercase;font-size:12px">Setup time</div><div style="font-size:26px;font-weight:800">2–3 days</div></div>
-        <div class="card" style="text-align:center"><div class="muted" style="text-transform:uppercase;font-size:12px">Time to ROI</div><div style="font-size:26px;font-weight:800">1–2 incidents</div></div>
-      </div>
-      <div id="demo" class="video">
-        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Smart Cooldown Demo" width="100%" height="100%" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-      </div>
-    </div>
-  </section>
-
-  <section id="how" class="block">
-    <div class="container">
-      <h2 style="text-align:center;font-size:32px;margin:0 0 8px 0">How it works</h2>
-      <p class="muted" style="text-align:center;margin:0 0 14px 0">Keep Stripe. Add a simple 24‑hour hold for risky orders—approve from your phone.</p>
-      <div class="split">
-        <div class="panel"><div class="muted" style="text-transform:uppercase;font-size:12px;font-weight:800">Step 1</div><h3>Radar flags risk</h3><p class="muted">CVC fail blocks. Elevated risk or new+$300 sends to Review. No extra friction for clean buyers.</p></div>
-        <div class="panel"><div class="muted" style="text-transform:uppercase;font-size:12px;font-weight:800">Step 2</div><h3>We hold for 24 hours</h3><p class="muted">A simple timer pauses fulfillment so fraud can’t slip through instantly.</p></div>
-        <div class="panel"><div class="muted" style="text-transform:uppercase;font-size:12px;font-weight:800">Step 3</div><h3>You approve or deny</h3><p class="muted">Email link opens the Stripe review screen. Decide in seconds from your phone.</p></div>
-        <div class="panel"><div class="muted" style="text-transform:uppercase;font-size:12px;font-weight:800">Step 4</div><h3>Auto‑reminder</h3><p class="muted">If untouched, a 24‑hour reminder email nudges you to approve/decline.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section id="compare" class="block">
-    <div class="container">
-      <h2 style="text-align:center;font-size:32px;margin:0 0 8px 0">Radar vs Smart Cooldown</h2>
-      <p class="muted" style="text-align:center">Radar detects. We turn signals into decisions you control.</p>
-      <div class="compare">
-        <div class="panel">
-          <div style="display:flex;justify-content:space-between;align-items:center"><h3>Stripe Radar</h3><span class="chip">Detection</span></div>
-          <ul class="clean">
-            <li>✔ AVS/CVC/IP checks</li>
-            <li>✔ Automated allow/decline</li>
-            <li>— No cooldown or hold window</li>
+  <main>
+    <!-- HERO / STEP 1: Lead Magnet -->
+    <section class="hero container">
+      <div class="grid">
+        <div>
+          <span class="badge">Harassed by collectors? <strong>Not anymore.</strong></span>
+          <h2 class="headline">Stop Debt Collectors <span style="color:var(--brand)">Legally</span> — Without a Lawyer</h2>
+          <p class="sub">Download the <strong>Cease &amp; Desist</strong> letter free, then see how to unlock the complete <em>Debt Reset Kit</em> so you can force verification, stop harassment, and protect your credit — the legal way.</p>
+          <ul class="list">
+            <li><span class="tick">✔</span> Instant email delivery • mobile‑friendly PDFs</li>
+            <li><span class="tick">✔</span> Step‑by‑step guide: which letter to send first</li>
+            <li><span class="tick">✔</span> Not legal advice • You stay in control</li>
           </ul>
-        </div>
-        <div class="panel" style="border-color:var(--ring)">
-          <div style="display:flex;justify-content:space-between;align-items:center"><h3>Smart Cooldown</h3><span class="chip">Protection</span></div>
-          <ul class="clean">
-            <li>✔ 24‑hour hold on risky orders</li>
-            <li>✔ One‑tap approve/deny from phone</li>
-            <li>✔ Auto reminder at 24h</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="pricing" class="block" style="border-top:1px solid #1f2a4b;border-bottom:1px solid #1f2a4b">
-    <div class="container">
-      <h2 style="text-align:center;font-size:32px;margin:0 0 8px 0">Get a 15‑minute Fraud Audit</h2>
-      <p class="muted" style="text-align:center">We’ll install the rules, wire email alerts, and run test payments live.</p>
-      <div class="price-grid">
-        <div class="price">
-          <h3>Starter</h3>
-          <div class="muted">Stripe‑only alerts</div>
-          <div class="amount">$297</div>
-          <ul class="clean">
-            <li>Radar rule pack install</li>
-            <li>Email alerts on review</li>
-            <li>5 test scenarios</li>
-          </ul>
-          <div style="margin-top:14px"><a href="#book" class="btn btn-ghost" style="width:100%">Book audit</a></div>
-        </div>
-        <div class="price" style="outline:2px solid var(--ring)">
-          <div style="display:flex;justify-content:space-between;align-items:center">
-            <h3>Pro</h3><span class="chip">Most popular</span>
+          <div class="trust">
+            <span>Secure Checkout</span> • <span>Instant Access</span> • <span>No Subscription</span>
           </div>
-          <div class="muted">Email‑only, done‑for‑you</div>
-          <div class="amount">$697</div>
-          <ul class="clean">
-            <li>Secure email alert webhook</li>
-            <li>24‑hour reminder on pending reviews</li>
-            <li>Monthly rule tuning (30 min)</li>
-            <li>Weekly snapshot email</li>
-          </ul>
-          <div style="margin-top:14px"><a href="#book" class="btn btn-primary" style="width:100%">Book audit</a></div>
         </div>
-        <div class="price">
-          <h3>Custom / Enterprise</h3>
-          <div class="muted">Exclusive, bespoke integration</div>
-          <div class="amount">Custom</div>
-          <ul class="clean">
-            <li>Advanced 3DS policy & allow/deny automation</li>
-            <li>Custom reporting & executive summaries</li>
-            <li>Priority support & on‑call changes</li>
-          </ul>
-          <div style="margin-top:14px"><a href="#book" class="btn btn-ghost" style="width:100%">Talk to us</a></div>
+        <div>
+          <div class="card">
+            <form id="leadForm" class="form" novalidate>
+              <label for="email">Get the Free Cease &amp; Desist Letter</label>
+              <input id="email" name="email" type="email" placeholder="you@email.com" required>
+              <button class="btn" type="submit">Send My Free Letter</button>
+              <p class="hint">By continuing you agree to receive your download link and follow‑up tips. Unsubscribe anytime.</p>
+            </form>
+            <div id="leadSuccess" style="display:none">
+              <h3 style="margin:0 0 8px">Check your inbox 📩</h3>
+              <p class="sub" style="margin:0 0 12px">Your free letter is on the way. While it sends, unlock the complete kit below.</p>
+              <a id="freeLink" class="btn secondary" href="#" download>Download Free Letter (PDF)</a>
+            </div>
+            <div class="progress" aria-hidden="true"><span></span></div>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="book" class="block">
-    <div class="container">
-      <h2 style="text-align:center;font-size:32px;margin:0 0 8px 0">Book your 15‑minute Zoom audit</h2>
-      <p class="muted" style="text-align:center">We’ll show test payments live and set up your alerts in real time.</p>
-      <div class="panel" style="max-width:860px;margin:16px auto">
-        <iframe title="Book a call" src="https://calendly.com/" style="width:100%;height:720px;border:0;border-radius:12px"></iframe>
+    <!-- OFFER / STEP 2 + 3 -->
+    <section id="offer" class="container">
+      <h3 class="section-title">Choose your protection</h3>
+      <p class="sub">Timer is live. When it hits 0:00, the launch discount ends.</p>
+      <div class="price-wrap">
+        <!-- STARTER -->
+        <article class="price-card" id="starterCard">
+          <h4 style="margin:0">Starter 3‑Letter Kit</h4>
+          <p class="sub">Cease &amp; Desist • Debt Dispute • Validation + "How to Use" guide.</p>
+          <div class="benefits">
+            <div><span class="tick">✔</span> 3 legal‑style templates (PDF)</div>
+            <div><span class="tick">✔</span> Step‑by‑step send order</div>
+            <div><span class="tick">✔</span> Instant delivery via email</div>
+          </div>
+          <div class="timer"><span>⏳</span> <span id="timerA">15:00</span> left at launch price</div>
+          <div class="price">$19.97</div>
+          <div class="value">Lawyers charge $300+ to send a single letter.</div>
+          <button id="buyStarter" class="btn" data-href="STRIPE_LINK_STARTER">Get Starter — $19.97</button>
+          <div class="guarantee">💚 30‑Day Money‑Back if you're not satisfied</div>
+        </article>
+
+        <!-- FULL -->
+        <article class="price-card" id="fullCard">
+          <div class="ribbon">Most Popular</div>
+          <h4 style="margin:0">Full Debt Reset Kit</h4>
+          <p class="sub">All letters + editable fillables + certified mail (online) guide.</p>
+          <div class="benefits">
+            <div><span class="tick">✔</span> Everything in Starter</div>
+            <div><span class="tick">✔</span> All 7 templates (incl. Pay‑for‑Delete)</div>
+            <div><span class="tick">✔</span> Fillable PDFs + Word versions</div>
+            <div><span class="tick">✔</span> How to send <strong>certified mail online</strong></div>
+            <div><span class="tick">✔</span> Bonus: Debt Tracker spreadsheet</div>
+          </div>
+          <div class="timer"><span>⏳</span> <span id="timerB">15:00</span> 50% OFF launch</div>
+          <div class="price">$28.97 <span class="compare">Reg. $57.94</span></div>
+          <div class="value">One‑time upgrade • Not offered again on this page</div>
+          <a id="buyFull" class="btn" href="#" data-href="STRIPE_LINK_FULL">Unlock Full Kit — $28.97</a>
+          <div class="guarantee">🛡️ Most protection for the lowest price</div>
+        </article>
       </div>
-    </div>
-  </section>
 
-  <section id="faq" class="block" style="border-top:1px solid #1f2a4b;border-bottom:1px solid #1f2a4b">
-    <div class="container" style="max-width:820px">
-      <h2 style="text-align:center;font-size:32px;margin:0 0 8px 0">FAQ</h2>
-      <p class="muted" style="text-align:center">Quick answers for busy merchants.</p>
-      <details>
-        <summary>Do I need any new software?</summary>
-        <p class="muted">No. We keep it Stripe‑first and send clean email alerts. Optional auto‑release reminder at 24 hours.</p>
+      <div class="stack">
+        <h4>What you get today</h4>
+        <ul class="list">
+          <li><span class="tick">✔</span> Cease &amp; Desist letter (free + in both kits)</li>
+          <li><span class="tick">✔</span> Debt Dispute + Validation letters</li>
+          <li><span class="tick">✔</span> Pay‑for‑Delete template (Full)</li>
+          <li><span class="tick">✔</span> Fillable PDFs + Word files (Full)</li>
+          <li><span class="tick">✔</span> Certified mail online sending guide (Full)</li>
+          <li><span class="tick">✔</span> 1‑page "How to Use" + send order</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- SOCIAL PROOF -->
+    <section class="container proof">
+      <h3 class="section-title">Real people. Real relief.</h3>
+      <div class="quotes">
+        <div class="quote">“Calls stopped in 48 hours after I sent the first letter. Worth it.” — <strong>J. Rivera</strong></div>
+        <div class="quote">“The guide made it simple. I didn’t pay a dime until they proved it.” — <strong>M. Chen</strong></div>
+        <div class="quote">“$29 vs hundreds to a lawyer. No brainer.” — <strong>T. Brooks</strong></div>
+      </div>
+    </section>
+
+    <!-- FAQ / COMPLIANCE -->
+    <section class="container faq">
+      <h3 class="section-title">Questions</h3>
+      <details><summary>Is this legal advice?</summary>
+        <p>No. This is an educational, DIY template kit that helps you exercise your consumer rights. It is not legal advice. If you need legal advice, consult a licensed attorney in your state.</p>
       </details>
-      <details>
-        <summary>Will this slow down good customers?</summary>
-        <p class="muted">Clean orders pass instantly. Only suspicious first‑timers get a short hold for manual approval.</p>
+      <details><summary>How do I receive the files?</summary>
+        <p>Immediately by email after checkout. You’ll get a ZIP with PDFs and, if you chose the Full kit, fillable PDFs and Word files plus the certified‑mail guide.</p>
       </details>
-      <details>
-        <summary>How fast is setup?</summary>
-        <p class="muted">Usually 2–3 days. We run five Stripe Test scenarios before go‑live.</p>
+      <details><summary>Will this remove my debt?</summary>
+        <p>Results vary. These letters enforce your rights to verification, accurate reporting, and fair communication. Many people see reduced harassment, removals of unverified items, or better settlement outcomes.</p>
       </details>
-    </div>
-  </section>
+    </section>
+  </main>
 
   <footer>
     <div class="container">
-      © <span id="y"></span> Smart Cooldown — Built on Stripe (not affiliated).
+      <div>© <span id="yr"></span> The Debt Protector • All Rights Reserved</div>
+      <div style="margin-top:6px">Not legal advice. For education only. By purchasing you agree to the Terms & Refund Policy.</div>
     </div>
   </footer>
-  <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+
+  <div id="upsellModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="upsellTitle">
+    <div class="box">
+      <h3 id="upsellTitle" class="section-title" style="margin-top:0">Wait — get the Complete Kit for <span style="color:var(--danger)">$9 more</span></h3>
+      <p class="sub">Upgrade now for $28.97 (Reg. $57.94). You’ll get all 7 letters, fillable PDFs, and the certified‑mail online guide.</p>
+      <div class="actions">
+        <a class="btn" id="upsellYes" href="#">Yes, upgrade me — $28.97</a>
+        <button class="btn outline" id="upsellNo">No thanks, keep Starter</button>
+      </div>
+      <p class="hint">This one‑time upgrade is only on this page.</p>
+    </div>
+  </div>
+
+  <!-- TikTok Pixel placeholder -->
+  <!-- <script> !function(w,d,t){/* your TT pixel here */}(); </script> -->
+
+  <script>
+    // UTIL: qs helper
+    const $ = sel => document.querySelector(sel);
+
+    // Year
+    $('#yr').textContent = new Date().getFullYear();
+
+    // STEP 1: Lead form
+    const leadForm = $('#leadForm');
+    const leadSuccess = $('#leadSuccess');
+    const offer = $('#offer');
+    const freeLink = $('#freeLink');
+
+    // TODO: Replace this with your actual free letter URL
+    const FREE_LETTER_URL = 'https://example.com/Free_Cease_and_Desist.pdf';
+
+    // Replace with your actual checkout links
+    const STRIPE_STARTER = 'https://buy.stripe.com/YOUR_STARTER_LINK';
+    const STRIPE_FULL = 'https://buy.stripe.com/YOUR_FULL_LINK';
+
+    function showOffer(){ offer.style.display='block'; document.querySelector('#offer').scrollIntoView({behavior:'smooth'}); }
+
+    if(leadForm){
+      leadForm.addEventListener('submit', (e)=>{
+        e.preventDefault();
+        const email = (document.getElementById('email').value||'').trim();
+        if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+          alert('Please enter a valid email.'); return;
+        }
+        localStorage.setItem('dp_email', email);
+        leadForm.style.display='none';
+        leadSuccess.style.display='block';
+        freeLink.href = FREE_LETTER_URL;
+        startCountdown();
+        showOffer();
+        // TODO: Send email to your ESP via fetch() to your endpoint or Zapier webhook.
+      })
+    }
+
+    // COUNTDOWN (15 minutes per user, persists in localStorage)
+    const TIMER_KEY = 'dp_deadline';
+    function startCountdown(){
+      let deadline = localStorage.getItem(TIMER_KEY);
+      const now = Date.now();
+      if(!deadline || now > +deadline){
+        deadline = now + 15*60*1000; // 15 minutes
+        localStorage.setItem(TIMER_KEY, deadline);
+      }
+      const tEls = [document.getElementById('timerA'), document.getElementById('timerB')];
+      function tick(){
+        const ms = +deadline - Date.now();
+        if(ms <= 0){ tEls.forEach(el=> el && (el.textContent='00:00')); return; }
+        const m = Math.floor(ms/60000).toString().padStart(2,'0');
+        const s = Math.floor((ms%60000)/1000).toString().padStart(2,'0');
+        tEls.forEach(el=> el && (el.textContent=`${m}:${s}`));
+        requestAnimationFrame(()=> setTimeout(tick, 250));
+      }
+      tick();
+    }
+
+    // If user already entered email before, reveal offer and resume timer
+    if(localStorage.getItem('dp_email')){
+      if(leadForm){ leadForm.style.display='none'; leadSuccess.style.display='block'; freeLink.href = FREE_LETTER_URL; }
+      offer.style.display='block'; startCountdown();
+    }
+
+    // Update buy links with email as query for tracking
+    function tracked(href){
+      const email = encodeURIComponent(localStorage.getItem('dp_email')||'');
+      if(!email) return href;
+      const url = new URL(href);
+      url.searchParams.set('buyer_email', (localStorage.getItem('dp_email')||''));
+      return url.toString();
+    }
+
+    const buyStarter = document.getElementById('buyStarter');
+    const buyFull = document.getElementById('buyFull');
+    const upsellModal = document.getElementById('upsellModal');
+    const upsellYes = document.getElementById('upsellYes');
+    const upsellNo = document.getElementById('upsellNo');
+
+    // Set initial hrefs
+    function setLinks(){
+      buyStarter?.setAttribute('data-href', STRIPE_STARTER);
+      buyFull?.setAttribute('href', tracked(STRIPE_FULL));
+      upsellYes?.setAttribute('href', tracked(STRIPE_FULL));
+    }
+    setLinks();
+
+    // One-time upsell modal when clicking Starter
+    buyStarter?.addEventListener('click', (e)=>{
+      e.preventDefault();
+      upsellModal.style.display='grid';
+    });
+
+    upsellNo?.addEventListener('click', ()=>{
+      upsellModal.style.display='none';
+      const href = buyStarter.getAttribute('data-href') || STRIPE_STARTER;
+      window.location.href = tracked(href);
+    })
+
+    upsellModal?.addEventListener('click', (e)=>{
+      if(e.target === upsellModal){ upsellModal.style.display='none'; }
+    })
+
+    // Nav sticky CTA smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', (e)=>{
+        const id = a.getAttribute('href');
+        const el = document.querySelector(id);
+        if(el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth'}); }
+      })
+    })
+  </script>
 </body>
 </html>
