@@ -256,11 +256,16 @@
     const freeLink = $('#freeLink');
 
     // TODO: Replace this with your actual free letter URL
-    const FREE_LETTER_URL = 'https://drive.google.com/uc?export=download&id=1zAjRYbG-YQDCO22foYWwV-PGEKvo2t-h'';
+    const FREE_LETTER_URL = 'https://drive.google.com/file/d/1zAjRYbG-YQDCO22foYWwV-PGEKvo2t-h/view?usp=drive_link';
 
-    // Replace with your actual checkout links
+    // Replace with your actual checkout links (you can paste **Gumroad/Payhip** product links here too)
     const STRIPE_STARTER = 'https://buy.stripe.com/YOUR_STARTER_LINK';
     const STRIPE_FULL = 'https://buy.stripe.com/YOUR_FULL_LINK';
+
+    // 🔌 ZAPIER/MAKE WEBHOOK to auto‑email the free letter
+    // Create a Zap with trigger "Webhooks by Zapier → Catch Hook" and paste the URL below
+    // Or use Make.com/IFTTT – any inbound webhook works the same
+    const ZAP_WEBHOOK_URL = 'https://hooks.zapier.com/hooks/catch/XXXX/YYYY/';
 
     function showOffer(){ offer.style.display='block'; document.querySelector('#offer').scrollIntoView({behavior:'smooth'}); }
 
@@ -275,9 +280,25 @@
         leadForm.style.display='none';
         leadSuccess.style.display='block';
         freeLink.href = FREE_LETTER_URL;
+        // Auto-open the PDF in a new tab so the user gets it instantly
+        try { window.open(FREE_LETTER_URL, '_blank'); } catch(e) {}
         startCountdown();
         showOffer();
-        // TODO: Send email to your ESP via fetch() to your endpoint or Zapier webhook.
+        // Send the lead to your webhook to trigger the email delivery
+        try {
+          fetch(ZAP_WEBHOOK_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              email,
+              event: 'free_letter_request',
+              free_url: FREE_LETTER_URL,
+              source: 'landing',
+              ts: new Date().toISOString(),
+              user_agent: navigator.userAgent
+            })
+          }).catch(()=>{});
+        } catch(err) { /* fail silently, user still gets local download */ }
       })
     }
 
