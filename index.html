@@ -20,7 +20,7 @@
       --shadow:0 8px 24px rgba(2,6,23,.08);
     }
     *{box-sizing:border-box}
-    body{margin:0;font-family:ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji"; color:var(--ink); background:var(--bg);}
+    body{margin:0;font-family:ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji"; color:var(--ink); background:var(--bg); -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; text-rendering:optimizeLegibility;}
     img{max-width:100%; display:block}
     a{color:var(--brand); text-decoration:none}
     .container{max-width:1120px; margin:0 auto; padding:24px}
@@ -29,26 +29,26 @@
     .brand{display:flex; align-items:center; gap:12px}
     .brand .logo{width:40px; height:40px; border-radius:50%; background:var(--brand); display:grid; place-items:center; box-shadow:0 4px 12px rgba(10,34,57,.18)}
     .brand .logo span{color:var(--accent); font-weight:800}
-    .brand h1{font-size:18px; margin:0}
+    .brand h1{font-size:18px; margin:0; letter-spacing:.01em;}
     .sticky-cta{display:none}
     @media(min-width:768px){ .sticky-cta{display:inline-flex; align-items:center; gap:10px; background:var(--cta); color:#fff; padding:10px 16px; border-radius:999px; box-shadow:0 6px 20px rgba(14,159,110,.35); font-weight:700} }
 
     /* Hero */
     .hero{padding:40px 0}
     .grid{display:grid; gap:28px}
-    @media(min-width:900px){ .grid{grid-template-columns:1.2fr .8fr; align-items:center} }
-    .badge{display:inline-flex; align-items:center; gap:8px; background:#F9FAFB; border:1px solid #EEF2F7; color:#0A2239; padding:8px 12px; border-radius:999px; font-weight:700}
-    .headline{font-size:clamp(28px, 3vw, 44px); line-height:1.1; margin:12px 0}
-    .sub{color:var(--muted); font-size:clamp(16px, 2vw, 18px)}
+    @media(min-width:900px){ .grid{grid-template-columns:1.2fr .8fr; align-items:center} .headline{font-size:48px} }
+    .badge{display:inline-flex; align-items:center; gap:8px; background:#F9FAFB; border:1px solid #EEF2F7; color:#0A2239; padding:8px 12px; border-radius:999px; font-weight:700; letter-spacing:.01em;}
+    .headline{font-size:clamp(28px, 3vw, 44px); line-height:1.12; margin:12px 0; letter-spacing:-0.015em; word-break:normal; overflow-wrap:break-word; hyphens:auto;}
+    .sub{color:var(--muted); font-size:clamp(16px, 2vw, 18px); line-height:1.6; letter-spacing:0;}
     .list{margin:18px 0; padding:0; list-style:none}
-    .list li{display:flex; gap:10px; align-items:flex-start; margin:10px 0}
+    .list li{display:flex; gap:10px; align-items:flex-start; margin:10px 0; line-height:1.45;}
     .list .tick{color:var(--cta); font-weight:900}
 
-    .card{background:#fff; border:1px solid #EEF2F7; border-radius:var(--radius); box-shadow:var(--shadow); padding:20px}
+    .card{background:#fff; border:1px solid #EEF2F7; border-radius:var(--radius); box-shadow:var(--shadow); padding:20px; word-break:normal;}
     .form label{font-weight:700; font-size:14px}
     .form input[type="email"]{width:100%; padding:16px 14px; border:1.5px solid #E5E7EB; border-radius:12px; outline:none; font-size:16px;}
     .form input[type="email"]:focus{border-color:var(--cta); box-shadow:0 0 0 6px var(--ring)}
-    .btn{display:inline-flex; align-items:center; justify-content:center; gap:8px; background:var(--cta); color:var(--cta-ink); border:none; border-radius:12px; padding:14px 18px; font-weight:800; cursor:pointer; width:100%;}
+    .btn{display:inline-flex; align-items:center; justify-content:center; gap:8px; background:var(--cta); color:var(--cta-ink); border:none; border-radius:12px; padding:14px 18px; font-weight:700; letter-spacing:.01em; line-height:1.2; cursor:pointer; width:100%; text-align:center; white-space:normal;}
     .btn.secondary{background:#0A2239;}
     .hint{color:var(--muted); font-size:12px; margin-top:6px}
     .trust{display:flex; gap:16px; flex-wrap:wrap; color:#6B7280; font-size:12px; margin-top:10px}
@@ -111,7 +111,7 @@
       <div class="grid">
         <div>
           <span class="badge">Harassed by collectors? <strong>Not anymore.</strong></span>
-          <h2 class="headline">Stop Debt Collectors <span style="color:var(--brand)">Legally</span> — Without a Lawyer</h2>
+          <h2 class="headline">Stop Debt Collectors <span style="color:var(--brand)">Legally</span> — Without a Lawyer.</h2>
           <p class="sub">Download the <strong>Cease &amp; Desist</strong> letter free, then see how to unlock the complete <em>Debt Reset Kit</em> so you can force verification, stop harassment, and protect your credit — the legal way.</p>
           <ul class="list">
             <li><span class="tick">✔</span> Instant email delivery • mobile‑friendly PDFs</li>
@@ -133,7 +133,7 @@
             <div id="leadSuccess" style="display:none">
               <h3 style="margin:0 0 8px">Check your inbox 📩</h3>
               <p class="sub" style="margin:0 0 12px">Your free letter is on the way. While it sends, unlock the complete kit below.</p>
-              <a id="freeLink" class="btn secondary" href="#" download>Download Free Letter (PDF)</a>
+              <a id="freeLink" class="btn secondary" href="#" target="_blank" rel="noopener">Download Free Letter (PDF)</a>
             </div>
             <div class="progress" aria-hidden="true"><span></span></div>
           </div>
@@ -256,7 +256,7 @@
     const freeLink = $('#freeLink');
 
     // TODO: Replace this with your actual free letter URL
-    const FREE_LETTER_URL = 'https://drive.google.com/file/d/1zAjRYbG-YQDCO22foYWwV-PGEKvo2t-h/view?usp=sharing';
+    const FREE_LETTER_URL = 'https://drive.google.com/uc?export=download&id=1zAjRYbG-YQDCO22foYWwV-PGEKvo2t-h';
 
     // Replace with your actual checkout links (you can paste **Gumroad/Payhip** product links here too)
     const STRIPE_STARTER = 'https://buy.stripe.com/YOUR_STARTER_LINK';
@@ -267,7 +267,7 @@
     // Or use Make.com/IFTTT – any inbound webhook works the same
     // 🔌 MAILCHIMP (client-side, no backend)
     // Convert your Mailchimp embed action URL to JSONP: .../subscribe/post-json?u=YOUR_U&id=YOUR_ID&c=?
-const MAILCHIMP_JSONP_URL =
+  const MAILCHIMP_JSONP_URL =
   'https://app.us5.list-manage.com/subscribe/post-json?u=f2ebf5b6d3307d2eb64af59c1&id=22602bf440&c=?';
 
     function subscribeMailchimp(email){
@@ -296,6 +296,14 @@ const MAILCHIMP_JSONP_URL =
         leadForm.style.display='none';
         leadSuccess.style.display='block';
         freeLink.href = FREE_LETTER_URL;
+              // open in a new tab so user stays on site
+              try{ freeLink.setAttribute('target','_blank'); freeLink.setAttribute('rel','noopener'); }catch(e){}
+              // Fallback for browsers that ignore target on programmatic set
+              freeLink.addEventListener('click', function(e){
+                if(!FREE_LETTER_URL) return;
+                // If the link is a Google Drive 'view' URL, it will still open in a new tab
+                // If you switch to the direct download format (uc?export=download&id=...), it will trigger download in the new tab
+              }, { once: true });
         // Auto-open the PDF in a new tab so the user gets it instantly
         /* auto-open removed: require click so email is captured first */
         startCountdown();
@@ -384,3 +392,5 @@ const MAILCHIMP_JSONP_URL =
   </script>
 </body>
 </html>
+
+
