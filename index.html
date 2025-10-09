@@ -239,8 +239,20 @@
     </div>
   </div>
 
+  <!-- Stripe Checkout Modal (HTML) -->
+  <div id="checkoutModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,.6); place-items:center; z-index:200;">
+    <div style="background:#fff; border-radius:16px; width:min(520px,92vw); padding:18px; box-shadow:0 20px 60px rgba(2,6,23,.25)">
+      <h3 style="margin:0 0 8px">Secure Checkout</h3>
+      <div id="payment-element"></div>
+      <button id="payNow" class="btn" style="margin-top:12px; width:100%">Pay</button>
+      <button id="closeCheckout" class="btn outline" style="margin-top:8px; width:100%">Cancel</button>
+      <div id="payMsg" class="hint" style="margin-top:8px"></div>
+    </div>
+  </div>
+
   <!-- TikTok Pixel placeholder -->
   <!-- <script> !function(w,d,t){/* your TT pixel here */}(); </script> -->
+  <script src="https://js.stripe.com/v3/"></script>
 
   <script>
     // UTIL: qs helper
@@ -256,7 +268,7 @@
     const freeLink = $('#freeLink');
 
     // TODO: Replace this with your actual free letter URL
-const FREE_LETTER_URL = '/downloads/Cease_and_Desist_Debt_Collection_Letter.pdf';
+    const FREE_LETTER_URL = 'https://example.com/Free_Cease_and_Desist.pdf';
 
     // Replace with your actual checkout links (you can paste **Gumroad/Payhip** product links here too)
     const STRIPE_STARTER = 'https://buy.stripe.com/YOUR_STARTER_LINK';
@@ -267,8 +279,7 @@ const FREE_LETTER_URL = '/downloads/Cease_and_Desist_Debt_Collection_Letter.pdf'
     // Or use Make.com/IFTTT – any inbound webhook works the same
     // 🔌 MAILCHIMP (client-side, no backend)
     // Convert your Mailchimp embed action URL to JSONP: .../subscribe/post-json?u=YOUR_U&id=YOUR_ID&c=?
-  const MAILCHIMP_JSONP_URL =
-  'https://app.us5.list-manage.com/subscribe/post-json?u=f2ebf5b6d3307d2eb64af59c1&id=22602bf440&c=?';
+    const MAILCHIMP_JSONP_URL = 'https://YOUR_DC.list-manage.com/subscribe/post-json?u=YOUR_U&id=YOUR_ID&c=?';
 
     function subscribeMailchimp(email){
       return new Promise((resolve)=>{
@@ -371,10 +382,11 @@ const FREE_LETTER_URL = '/downloads/Cease_and_Desist_Debt_Collection_Letter.pdf'
       upsellModal.style.display='grid';
     });
 
-    upsellNo?.addEventListener('click', ()=>{
+    upsellNo?.addEventListener('click', (e)=>{
+      e.preventDefault();
       upsellModal.style.display='none';
-      const href = buyStarter.getAttribute('data-href') || STRIPE_STARTER;
-      window.location.href = tracked(href);
+      // Open Stripe checkout for the Starter kit
+      openCheckout('starter');
     })
 
     upsellModal?.addEventListener('click', (e)=>{
@@ -390,7 +402,74 @@ const FREE_LETTER_URL = '/downloads/Cease_and_Desist_Debt_Collection_Letter.pdf'
       })
     })
   </script>
+
+  <!-- Stripe Checkout Modal logic -->
+  <script>
+    // Replace with your Stripe publishable key (test key first)
+    const STRIPE_PUBLISHABLE_KEY = 'pk_test_51Rpcep2NAZdGyvKDjXJvJ2gSePQ2bRh9zwfnLfyyosSa317MW8liwlPvVbCk5v5YbkdnnRexDBUNCwjASG3zYqGb00Ma3raQs4';
+
+    const checkoutModalEl = document.getElementById('checkoutModal');
+    const payNowBtn = document.getElementById('payNow');
+    const closeCheckoutBtn = document.getElementById('closeCheckout');
+    const payMsgEl = document.getElementById('payMsg');
+    const paymentContainer = document.getElementById('payment-element');
+
+    let stripeInstance, stripeElements, clientSecretValue, selectedProduct = 'starter';
+
+    async function openCheckout(product){
+      selectedProduct = product;
+      payMsgEl.textContent = '';
+      paymentContainer.innerHTML = '';
+      checkoutModalEl.style.display = 'grid';
+      try{
+        const r = await fetch('/api/create-intent', {
+          method:'POST', headers:{'Content-Type':'application/json'},
+          body: JSON.stringify({ product })
+        });
+        const data = await r.json();
+        if(!data.clientSecret){ payMsgEl.textContent = 'Could not start checkout. Try again.'; return; }
+        clientSecretValue = data.clientSecret;
+        stripeInstance = Stripe(STRIPE_PUBLISHABLE_KEY);
+        stripeElements = stripeInstance.elements({ clientSecret: clientSecretValue });
+        const paymentEl = stripeElements.create('payment');
+        paymentEl.mount('#payment-element');
+      } catch(err){
+        payMsgEl.textContent = 'Network error. Please try again.';
+      }
+    }
+
+    async function confirmPay(){
+      if(!stripeInstance){ return; }
+      const result = await stripeInstance.confirmPayment({
+        elements: stripeElements,
+        confirmParams: {
+          return_url: window.location.origin + '/thank-you.html?p=' + selectedProduct
+        }
+      });
+      if(result.error){
+        payMsgEl.textContent = result.error.message || 'Payment error. Try another method.';
+      }
+    }
+
+    payNowBtn?.addEventListener('click', confirmPay);
+    closeCheckoutBtn?.addEventListener('click', ()=>{
+      checkoutModalEl.style.display='none';
+      payMsgEl.textContent='';
+      paymentContainer.innerHTML='';
+    });
+
+    // Hook buttons to open Stripe checkout
+    document.getElementById('buyFull')?.addEventListener('click', (e)=>{ e.preventDefault(); openCheckout('full'); });
+    document.getElementById('upsellYes')?.addEventListener('click', (e)=>{ e.preventDefault(); document.getElementById('upsellModal').style.display='none'; openCheckout('full'); });
+
+    // Ensure the old upsellNo behavior is removed and replaced with Stripe checkout
+    (function(){
+      const noBtn = document.getElementById('upsellNo');
+      if(!noBtn) return;
+      const clone = noBtn.cloneNode(true);
+      noBtn.parentNode.replaceChild(clone, noBtn);
+      clone.addEventListener('click', (e)=>{ e.preventDefault(); document.getElementById('upsellModal').style.display='none'; openCheckout('starter'); });
+    })();
+  </script>
 </body>
 </html>
-
-
