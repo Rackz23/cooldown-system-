@@ -404,73 +404,111 @@
     })
   </script>
 
-  <!-- Stripe Checkout Modal logic -->
-  <script>
-    // Replace with your Stripe publishable key (test key first)
-    const STRIPE_PUBLISHABLE_KEY = 'pk_test_51Rpcep2NAZdGyvKDjXJvJ2gSePQ2bRh9zwfnLfyyosSa317MW8liwlPvVbCk5v5YbkdnnRexDBUNCwjASG3zYqGb00Ma3raQs4';
+ <!-- Stripe Checkout Modal logic -->
+<script>
+  // ✅ your publishable TEST key (safe in browser)
+  const STRIPE_PUBLISHABLE_KEY = 'pk_test_51Rpcep2NAZdGyvKDjXJvJ2gSePQ2bRh9zwfnLfyyosSa317MW8liwlPvVbCk5v5YbkdnnRexDBUNCwjASG3zYqGb00Ma3raQs4';
 
-    const checkoutModalEl = document.getElementById('checkoutModal');
-    const payNowBtn = document.getElementById('payNow');
-    const closeCheckoutBtn = document.getElementById('closeCheckout');
-    const payMsgEl = document.getElementById('payMsg');
-    const paymentContainer = document.getElementById('payment-element');
+  // ✅ force Stripe to return to the stable domain that has thank-you.html
+  const SITE_ORIGIN = 'https://cooldown-system.vercel.app'; // change to your custom domain later
 
-    let stripeInstance, stripeElements, clientSecretValue, selectedProduct = 'starter';
+  const checkoutModalEl   = document.getElementById('checkoutModal');
+  const payNowBtn         = document.getElementById('payNow');
+  const closeCheckoutBtn  = document.getElementById('closeCheckout');
+  const payMsgEl          = document.getElementById('payMsg');
+  const paymentContainer  = document.getElementById('payment-element');
 
-    async function openCheckout(product){
-      selectedProduct = product;
-      payMsgEl.textContent = '';
-      paymentContainer.innerHTML = '';
-      checkoutModalEl.style.display = 'grid';
-      try{
-        const r = await fetch('/api/create-intent', {
-          method:'POST', headers:{'Content-Type':'application/json'},
-          body: JSON.stringify({ product })
-        });
-        const data = await r.json();
-        if(!data.clientSecret){ payMsgEl.textContent = 'Could not start checkout. Try again.'; return; }
-        clientSecretValue = data.clientSecret;
-        stripeInstance = Stripe(STRIPE_PUBLISHABLE_KEY);
-        stripeElements = stripeInstance.elements({ clientSecret: clientSecretValue });
-        const paymentEl = stripeElements.create('payment');
-        paymentEl.mount('#payment-element');
-      } catch(err){
-        payMsgEl.textContent = 'Network error. Please try again.';
-      }
-    }
+  let stripe, elements, clientSecret, selectedProduct = 'starter';
+  let isPaying = false;
 
-    async function confirmPay(){
-      if(!stripeInstance){ return; }
-      const result = await stripeInstance.confirmPayment({
-        elements: stripeElements,
-        confirmParams: {
-          return_url: window.location.origin + '/thank-you.html?p=' + selectedProduct
-        }
+  async function openCheckout(product){
+    selectedProduct = product;
+    payMsgEl.textContent = '';
+    paymentContainer.innerHTML = '';
+    isPaying = false;
+    payNowBtn.disabled = false;
+
+    checkoutModalEl.style.display = 'grid';
+
+    try{
+      const r = await fetch('/api/create-intent', {
+        method:'POST',
+        headers:{ 'Content-Type':'application/json' },
+        body: JSON.stringify({ product })
       });
-      if(result.error){
-        payMsgEl.textContent = result.error.message || 'Payment error. Try another method.';
+      if(!r.ok){
+        const txt = await r.text();
+        throw new Error('Server error starting checkout. ' + txt);
       }
-    }
+      const data = await r.json();
+      if(!data.clientSecret){ throw new Error('Missing client secret.'); }
 
-    payNowBtn?.addEventListener('click', confirmPay);
-    closeCheckoutBtn?.addEventListener('click', ()=>{
-      checkoutModalEl.style.display='none';
-      payMsgEl.textContent='';
-      paymentContainer.innerHTML='';
+      clientSecret = data.clientSecret;
+
+      // Init Stripe.js + Payment Element
+      stripe = Stripe(STRIPE_PUBLISHABLE_KEY);
+      elements = stripe.elements({ clientSecret });
+      const paymentEl = elements.create('payment');
+      paymentEl.mount('#payment-element');
+
+    } catch(err){
+      payMsgEl.textContent = err.message || 'Network error. Please try again.';
+    }
+  }
+
+  async function confirmPay(){
+    if(isPaying || !stripe) return;
+    isPaying = true;
+    payNowBtn.disabled = true;
+    payNowBtn.textContent = 'Processing…';
+    payMsgEl.textContent = '';
+
+    const result = await stripe.confirmPayment({
+      elements,
+      confirmParams: {
+        // 🔁 always send users back to the domain that definitely has thank-you.html
+        return_url: SITE_ORIGIN + '/thank-you.html?p=' + selectedProduct
+      }
+      // Note: no redirect: 'if_required' here; we want Stripe to handle 3DS/redirects.
     });
 
-    // Hook buttons to open Stripe checkout
-    document.getElementById('buyFull')?.addEventListener('click', (e)=>{ e.preventDefault(); openCheckout('full'); });
-    document.getElementById('upsellYes')?.addEventListener('click', (e)=>{ e.preventDefault(); document.getElementById('upsellModal').style.display='none'; openCheckout('full'); });
+    if(result?.error){
+      payMsgEl.textContent = result.error.message || 'Payment error. Try another method.';
+      isPaying = false;
+      payNowBtn.disabled = false;
+      payNowBtn.textContent = 'Pay';
+    }
+  }
 
-    // Ensure the old upsellNo behavior is removed and replaced with Stripe checkout
-    (function(){
-      const noBtn = document.getElementById('upsellNo');
-      if(!noBtn) return;
-      const clone = noBtn.cloneNode(true);
-      noBtn.parentNode.replaceChild(clone, noBtn);
-      clone.addEventListener('click', (e)=>{ e.preventDefault(); document.getElementById('upsellModal').style.display='none'; openCheckout('starter'); });
-    })();
-  </script>
-</body>
-</html>
+  function closeCheckout(){
+    checkoutModalEl.style.display = 'none';
+    payMsgEl.textContent = '';
+    paymentContainer.innerHTML = '';
+    try{ elements?.update({}); }catch(e){}
+    elements = null;
+    stripe = null;
+    isPaying = false;
+    payNowBtn.disabled = false;
+    payNowBtn.textContent = 'Pay';
+  }
+
+  payNowBtn?.addEventListener('click', confirmPay);
+  closeCheckoutBtn?.addEventListener('click', closeCheckout);
+
+  // Hook buttons to open Stripe checkout
+  document.getElementById('buyFull')?.addEventListener('click', (e)=>{ e.preventDefault(); openCheckout('full'); });
+  document.getElementById('upsellYes')?.addEventListener('click', (e)=>{ e.preventDefault(); document.getElementById('upsellModal').style.display='none'; openCheckout('full'); });
+
+  // Starter via "No thanks"
+  (function(){
+    const noBtn = document.getElementById('upsellNo');
+    if(!noBtn) return;
+    const clone = noBtn.cloneNode(true);
+    noBtn.parentNode.replaceChild(clone, noBtn);
+    clone.addEventListener('click', (e)=>{
+      e.preventDefault();
+      document.getElementById('upsellModal').style.display='none';
+      openCheckout('starter');
+    });
+  })();
+</script>
