@@ -3,101 +3,87 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0E9F6E" />
   <title>The Debt Protector — Debt Reset Kit</title>
-  <meta name="description" content="Stop debt collectors legally without a lawyer. Download legal‑style letter templates and get instant relief.">
+  <meta name="description" content="Stop debt collectors legally without a lawyer. Download legal-style letter templates and get instant relief.">
+
   <style>
     :root{
-      --bg:#ffffff; /* white */
-      --ink:#0B1727; /* deep navy ink */
-      --muted:#6B7280; /* gray */
-      --brand:#0A2239; /* navy */
-      --accent:#E5B73B; /* gold */
-      --cta:#0E9F6E; /* green */
-      --cta-ink:#ffffff;
-      --danger:#DC2626;
-      --ring: rgba(14,159,110,.25);
-      --radius:16px;
-      --shadow:0 8px 24px rgba(2,6,23,.08);
+      --bg:#ffffff; --ink:#0B1727; --muted:#6B7280; --brand:#0A2239; --accent:#E5B73B;
+      --cta:#0E9F6E; --cta-ink:#ffffff; --danger:#DC2626; --ring: rgba(14,159,110,.25);
+      --radius:16px; --shadow:0 8px 24px rgba(2,6,23,.08);
     }
     *{box-sizing:border-box}
-    body{margin:0;font-family:ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji"; color:var(--ink); background:var(--bg); -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; text-rendering:optimizeLegibility;}
-    img{max-width:100%; display:block}
-    a{color:var(--brand); text-decoration:none}
-    .container{max-width:1120px; margin:0 auto; padding:24px}
-    header{position:sticky; top:0; z-index:50; background:rgba(255,255,255,.9); backdrop-filter:saturate(180%) blur(8px); border-bottom:1px solid #eef1f6}
-    .nav{display:flex; align-items:center; justify-content:space-between; gap:16px}
-    .brand{display:flex; align-items:center; gap:12px}
-    .brand .logo{width:40px; height:40px; border-radius:50%; background:var(--brand); display:grid; place-items:center; box-shadow:0 4px 12px rgba(10,34,57,.18)}
-    .brand .logo span{color:var(--accent); font-weight:800}
-    .brand h1{font-size:18px; margin:0; letter-spacing:.01em;}
+    body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial,"Noto Sans";color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+    img{max-width:100%;display:block}
+    a{color:var(--brand);text-decoration:none}
+    .container{max-width:1120px;margin:0 auto;padding:24px}
+    header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.9);backdrop-filter:saturate(180%) blur(8px);border-bottom:1px solid #eef1f6}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand .logo{width:40px;height:40px;border-radius:50%;background:var(--brand);display:grid;place-items:center;box-shadow:0 4px 12px rgba(10,34,57,.18)}
+    .brand .logo span{color:var(--accent);font-weight:800}
+    .brand h1{font-size:18px;margin:0;letter-spacing:.01em;}
     .sticky-cta{display:none}
-    @media(min-width:768px){ .sticky-cta{display:inline-flex; align-items:center; gap:10px; background:var(--cta); color:#fff; padding:10px 16px; border-radius:999px; box-shadow:0 6px 20px rgba(14,159,110,.35); font-weight:700} }
+    @media(min-width:768px){ .sticky-cta{display:inline-flex;align-items:center;gap:10px;background:var(--cta);color:#fff;padding:10px 16px;border-radius:999px;box-shadow:0 6px 20px rgba(14,159,110,.35);font-weight:700} }
 
-    /* Hero */
     .hero{padding:40px 0}
-    .grid{display:grid; gap:28px}
-    @media(min-width:900px){ .grid{grid-template-columns:1.2fr .8fr; align-items:center} .headline{font-size:48px} }
-    .badge{display:inline-flex; align-items:center; gap:8px; background:#F9FAFB; border:1px solid #EEF2F7; color:#0A2239; padding:8px 12px; border-radius:999px; font-weight:700; letter-spacing:.01em;}
-    .headline{font-size:clamp(28px, 3vw, 44px); line-height:1.12; margin:12px 0; letter-spacing:-0.015em; word-break:normal; overflow-wrap:break-word; hyphens:auto;}
-    .sub{color:var(--muted); font-size:clamp(16px, 2vw, 18px); line-height:1.6; letter-spacing:0;}
-    .list{margin:18px 0; padding:0; list-style:none}
-    .list li{display:flex; gap:10px; align-items:flex-start; margin:10px 0; line-height:1.45;}
-    .list .tick{color:var(--cta); font-weight:900}
+    .grid{display:grid;gap:28px}
+    @media(min-width:900px){ .grid{grid-template-columns:1.2fr .8fr;align-items:center} .headline{font-size:48px} }
+    .badge{display:inline-flex;align-items:center;gap:8px;background:#F9FAFB;border:1px solid #EEF2F7;color:#0A2239;padding:8px 12px;border-radius:999px;font-weight:700;letter-spacing:.01em;}
+    .headline{font-size:clamp(28px, 3vw, 44px);line-height:1.12;margin:12px 0;letter-spacing:-0.015em}
+    .sub{color:var(--muted);font-size:clamp(16px, 2vw, 18px);line-height:1.6}
+    .list{margin:18px 0;padding:0;list-style:none}
+    .list li{display:flex;gap:10px;align-items:flex-start;margin:10px 0;line-height:1.45}
+    .list .tick{color:var(--cta);font-weight:900}
 
-    .card{background:#fff; border:1px solid #EEF2F7; border-radius:var(--radius); box-shadow:var(--shadow); padding:20px; word-break:normal;}
-    .form label{font-weight:700; font-size:14px}
-    .form input[type="email"]{width:100%; padding:16px 14px; border:1.5px solid #E5E7EB; border-radius:12px; outline:none; font-size:16px;}
-    .form input[type="email"]:focus{border-color:var(--cta); box-shadow:0 0 0 6px var(--ring)}
-    .btn{display:inline-flex; align-items:center; justify-content:center; gap:8px; background:var(--cta); color:var(--cta-ink); border:none; border-radius:12px; padding:14px 18px; font-weight:700; letter-spacing:.01em; line-height:1.2; cursor:pointer; width:100%; text-align:center; white-space:normal;}
-    .btn.secondary{background:#0A2239;}
-    .hint{color:var(--muted); font-size:12px; margin-top:6px}
-    .trust{display:flex; gap:16px; flex-wrap:wrap; color:#6B7280; font-size:12px; margin-top:10px}
+    .card{background:#fff;border:1px solid #EEF2F7;border-radius:var(--radius);box-shadow:var(--shadow);padding:20px}
+    .form label{font-weight:700;font-size:14px}
+    .form input[type="email"]{width:100%;padding:16px 14px;border:1.5px solid #E5E7EB;border-radius:12px;outline:none;font-size:16px}
+    .form input[type="email"]:focus{border-color:var(--cta);box-shadow:0 0 0 6px var(--ring)}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--cta);color:var(--cta-ink);border:none;border-radius:12px;padding:14px 18px;font-weight:700;letter-spacing:.01em;line-height:1.2;cursor:pointer;width:100%;text-align:center}
+    .btn.secondary{background:#0A2239}
+    .btn.outline{background:#fff;color:#0A2239;border:2px solid #0A2239}
+    .hint{color:var(--muted);font-size:12px;margin-top:6px}
+    .trust{display:flex;gap:16px;flex-wrap:wrap;color:#6B7280;font-size:12px;margin-top:10px}
+    .progress{margin:12px 0 0;height:6px;background:#F3F4F6;border-radius:999px;overflow:hidden}
+    .progress>span{display:block;height:100%;background:linear-gradient(90deg,var(--accent),#f5d56e);width:33%}
 
-    .progress{margin:12px 0 0; height:6px; background:#F3F4F6; border-radius:999px; overflow:hidden}
-    .progress > span{display:block; height:100%; background:linear-gradient(90deg, var(--accent), #f5d56e); width:33%}
-
-    /* Offer */
-    #offer{display:none; padding:32px 0 20px}
-    .section-title{font-size:clamp(22px,2.5vw,32px); margin:0 0 10px}
-    .price-wrap{display:grid; gap:20px}
+    #offer{display:none;padding:32px 0 20px}
+    .section-title{font-size:clamp(22px,2.5vw,32px);margin:0 0 10px}
+    .price-wrap{display:grid;gap:20px}
     @media(min-width:900px){ .price-wrap{grid-template-columns:1fr 1fr} }
-    .price-card{position:relative; border:1px solid #eef2f7; border-radius:var(--radius); box-shadow:var(--shadow); padding:20px; background:#fff}
-    .ribbon{position:absolute; top:14px; right:-10px; background:var(--accent); color:#111827; font-weight:800; padding:6px 10px; border-radius:8px}
-    .price{font-size:34px; font-weight:900; color:#0A2239; margin:6px 0}
-    .compare{color:#9CA3AF; text-decoration:line-through; font-weight:700}
-    .timer{display:inline-flex; gap:8px; background:#FFF7ED; color:#93370D; border:1px solid #FED7AA; border-radius:8px; padding:8px 12px; font-weight:800}
-    .value{background:#F9FAFB; border:1px dashed #E5E7EB; padding:10px 12px; border-radius:12px; margin-top:10px; color:#4B5563}
-    .guarantee{display:flex; align-items:center; gap:10px; color:#065F46; background:#ECFDF5; border:1px solid #A7F3D0; padding:10px 12px; border-radius:10px; font-weight:700; margin-top:10px}
-
-    .benefits{display:grid; gap:12px; margin:12px 0}
-    .benefits div{display:flex; gap:10px; align-items:flex-start}
-
-    .stack{margin-top:24px; background:#fff; border:1px solid #eef2f7; border-radius:16px; box-shadow:var(--shadow); padding:16px}
+    .price-card{position:relative;border:1px solid #eef2f7;border-radius:var(--radius);box-shadow:var(--shadow);padding:20px;background:#fff}
+    .ribbon{position:absolute;top:14px;right:-10px;background:var(--accent);color:#111827;font-weight:800;padding:6px 10px;border-radius:8px}
+    .price{font-size:34px;font-weight:900;color:#0A2239;margin:6px 0}
+    .compare{color:#9CA3AF;text-decoration:line-through;font-weight:700}
+    .timer{display:inline-flex;gap:8px;background:#FFF7ED;color:#93370D;border:1px solid #FED7AA;border-radius:8px;padding:8px 12px;font-weight:800}
+    .value{background:#F9FAFB;border:1px dashed #E5E7EB;padding:10px 12px;border-radius:12px;margin-top:10px;color:#4B5563}
+    .guarantee{display:flex;align-items:center;gap:10px;color:#065F46;background:#ECFDF5;border:1px solid #A7F3D0;padding:10px 12px;border-radius:10px;font-weight:700;margin-top:10px}
+    .benefits{display:grid;gap:12px;margin:12px 0}
+    .benefits div{display:flex;gap:10px;align-items:flex-start}
+    .stack{margin-top:24px;background:#fff;border:1px solid #eef2f7;border-radius:16px;box-shadow:var(--shadow);padding:16px}
     .stack h4{margin:0 0 10px}
 
-    /* Modal upsell */
-    .modal{position:fixed; inset:0; background:rgba(2,6,23,.55); display:none; place-items:center; z-index:100}
-    .modal .box{background:#fff; border-radius:16px; padding:22px; width:min(560px, 92vw); box-shadow:0 20px 60px rgba(2,6,23,.25)}
-    .modal .actions{display:flex; gap:10px; margin-top:12px; flex-wrap:wrap}
-    .outline{background:#fff; color:#0A2239; border:2px solid #0A2239}
+    .modal{position:fixed;inset:0;background:rgba(2,6,23,.55);display:none;place-items:center;z-index:100}
+    .modal .box{background:#fff;border-radius:16px;padding:22px;width:min(560px, 92vw);box-shadow:0 20px 60px rgba(2,6,23,.25)}
+    .modal .actions{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
 
-    /* Social proof & FAQ */
     .proof{padding:12px 0 28px}
-    .quotes{display:grid; gap:16px}
+    .quotes{display:grid;gap:16px}
     @media(min-width:900px){ .quotes{grid-template-columns:1fr 1fr 1fr} }
-    .quote{border:1px solid #eef2f7; border-radius:14px; padding:14px; background:#fff; box-shadow:var(--shadow); color:#374151;}
+    .quote{border:1px solid #eef2f7;border-radius:14px;padding:14px;background:#fff;box-shadow:var(--shadow);color:#374151}
     .faq{padding:20px 0 40px}
-    details{border:1px solid #eef2f7; border-radius:12px; padding:12px 14px; background:#fff; margin:8px 0}
-    summary{font-weight:800; cursor:pointer}
+    details{border:1px solid #eef2f7;border-radius:12px;padding:12px 14px;background:#fff;margin:8px 0}
+    summary{font-weight:800;cursor:pointer}
 
-    footer{border-top:1px solid #eef2f7; padding:16px 0; color:#6B7280; font-size:12px}
+    footer{border-top:1px solid #eef2f7;padding:16px 0;color:#6B7280;font-size:12px}
   </style>
 </head>
 <body>
   <header>
     <div class="container nav">
       <div class="brand">
-        <!-- Replace src with your final logo -->
         <div class="logo" aria-hidden="true"><span>🛡️</span></div>
         <h1>The Debt Protector</h1>
       </div>
@@ -106,7 +92,7 @@
   </header>
 
   <main>
-    <!-- HERO / STEP 1: Lead Magnet -->
+    <!-- HERO -->
     <section class="hero container">
       <div class="grid">
         <div>
@@ -114,52 +100,54 @@
           <h2 class="headline">Stop Debt Collectors <span style="color:var(--brand)">Legally</span> — Without a Lawyer.</h2>
           <p class="sub">Download the <strong>Cease &amp; Desist</strong> letter free, then see how to unlock the complete <em>Debt Reset Kit</em> so you can force verification, stop harassment, and protect your credit — the legal way.</p>
           <ul class="list">
-            <li><span class="tick">✔</span> Instant email delivery • mobile‑friendly PDFs</li>
-            <li><span class="tick">✔</span> Step‑by‑step guide: which letter to send first</li>
+            <li><span class="tick">✔</span> Instant email delivery • mobile-friendly PDFs</li>
+            <li><span class="tick">✔</span> Step-by-step guide: which letter to send first</li>
             <li><span class="tick">✔</span> Not legal advice • You stay in control</li>
           </ul>
-          <div class="trust">
-            <span>Secure Checkout</span> • <span>Instant Access</span> • <span>No Subscription</span>
-          </div>
+          <div class="trust"><span>Secure Checkout</span> • <span>Instant Access</span> • <span>No Subscription</span></div>
         </div>
+
         <div>
           <div class="card">
             <form id="leadForm" class="form" novalidate>
               <label for="email">Get the Free Cease &amp; Desist Letter</label>
               <input id="email" name="email" type="email" placeholder="you@email.com" required>
               <button class="btn" type="submit">Send My Free Letter</button>
-              <p class="hint">By continuing you agree to receive your download link and follow‑up tips. Unsubscribe anytime.</p>
+              <p class="hint">By continuing you agree to receive your download link and follow-up tips. Unsubscribe anytime.</p>
             </form>
+
             <div id="leadSuccess" style="display:none">
               <h3 style="margin:0 0 8px">Check your inbox 📩</h3>
               <p class="sub" style="margin:0 0 12px">Your free letter is on the way. While it sends, unlock the complete kit below.</p>
               <a id="freeLink" class="btn secondary" href="#" target="_blank" rel="noopener">Download Free Letter (PDF)</a>
             </div>
+
             <div class="progress" aria-hidden="true"><span></span></div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- OFFER / STEP 2 + 3 -->
+    <!-- OFFER -->
     <section id="offer" class="container">
       <h3 class="section-title">Choose your protection</h3>
       <p class="sub">Timer is live. When it hits 0:00, the launch discount ends.</p>
+
       <div class="price-wrap">
         <!-- STARTER -->
         <article class="price-card" id="starterCard">
-          <h4 style="margin:0">Starter 3‑Letter Kit</h4>
+          <h4 style="margin:0">Starter 3-Letter Kit</h4>
           <p class="sub">Cease &amp; Desist • Debt Dispute • Validation + "How to Use" guide.</p>
           <div class="benefits">
-            <div><span class="tick">✔</span> 3 legal‑style templates (PDF)</div>
-            <div><span class="tick">✔</span> Step‑by‑step send order</div>
+            <div><span class="tick">✔</span> 3 legal-style templates (PDF)</div>
+            <div><span class="tick">✔</span> Step-by-step send order</div>
             <div><span class="tick">✔</span> Instant delivery via email</div>
           </div>
           <div class="timer"><span>⏳</span> <span id="timerA">15:00</span> left at launch price</div>
           <div class="price">$19.97</div>
           <div class="value">Lawyers charge $300+ to send a single letter.</div>
-          <button id="buyStarter" class="btn" data-href="STRIPE_LINK_STARTER">Get Starter — $19.97</button>
-          <div class="guarantee">💚 30‑Day Money‑Back if you're not satisfied</div>
+          <button id="buyStarter" class="btn">Get Starter — $19.97</button>
+          <div class="guarantee">💚 30-Day Money-Back if you're not satisfied</div>
         </article>
 
         <!-- FULL -->
@@ -169,15 +157,15 @@
           <p class="sub">All letters + editable fillables + certified mail (online) guide.</p>
           <div class="benefits">
             <div><span class="tick">✔</span> Everything in Starter</div>
-            <div><span class="tick">✔</span> All 7 templates (incl. Pay‑for‑Delete)</div>
+            <div><span class="tick">✔</span> All 7 templates (incl. Pay-for-Delete)</div>
             <div><span class="tick">✔</span> Fillable PDFs + Word versions</div>
             <div><span class="tick">✔</span> How to send <strong>certified mail online</strong></div>
             <div><span class="tick">✔</span> Bonus: Debt Tracker spreadsheet</div>
           </div>
           <div class="timer"><span>⏳</span> <span id="timerB">15:00</span> 50% OFF launch</div>
           <div class="price">$28.97 <span class="compare">Reg. $57.94</span></div>
-          <div class="value">One‑time upgrade • Not offered again on this page</div>
-          <a id="buyFull" class="btn" href="#" data-href="STRIPE_LINK_FULL">Unlock Full Kit — $28.97</a>
+          <div class="value">One-time upgrade • Not offered again on this page</div>
+          <a id="buyFull" class="btn" href="#">Unlock Full Kit — $28.97</a>
           <div class="guarantee">🛡️ Most protection for the lowest price</div>
         </article>
       </div>
@@ -187,36 +175,12 @@
         <ul class="list">
           <li><span class="tick">✔</span> Cease &amp; Desist letter (free + in both kits)</li>
           <li><span class="tick">✔</span> Debt Dispute + Validation letters</li>
-          <li><span class="tick">✔</span> Pay‑for‑Delete template (Full)</li>
+          <li><span class="tick">✔</span> Pay-for-Delete template (Full)</li>
           <li><span class="tick">✔</span> Fillable PDFs + Word files (Full)</li>
           <li><span class="tick">✔</span> Certified mail online sending guide (Full)</li>
-          <li><span class="tick">✔</span> 1‑page "How to Use" + send order</li>
+          <li><span class="tick">✔</span> 1-page "How to Use" + send order</li>
         </ul>
       </div>
-    </section>
-
-    <!-- SOCIAL PROOF -->
-    <section class="container proof">
-      <h3 class="section-title">Real people. Real relief.</h3>
-      <div class="quotes">
-        <div class="quote">“Calls stopped in 48 hours after I sent the first letter. Worth it.” — <strong>J. Rivera</strong></div>
-        <div class="quote">“The guide made it simple. I didn’t pay a dime until they proved it.” — <strong>M. Chen</strong></div>
-        <div class="quote">“$29 vs hundreds to a lawyer. No brainer.” — <strong>T. Brooks</strong></div>
-      </div>
-    </section>
-
-    <!-- FAQ / COMPLIANCE -->
-    <section class="container faq">
-      <h3 class="section-title">Questions</h3>
-      <details><summary>Is this legal advice?</summary>
-        <p>No. This is an educational, DIY template kit that helps you exercise your consumer rights. It is not legal advice. If you need legal advice, consult a licensed attorney in your state.</p>
-      </details>
-      <details><summary>How do I receive the files?</summary>
-        <p>Immediately by email after checkout. You’ll get a ZIP with PDFs and, if you chose the Full kit, fillable PDFs and Word files plus the certified‑mail guide.</p>
-      </details>
-      <details><summary>Will this remove my debt?</summary>
-        <p>Results vary. These letters enforce your rights to verification, accurate reporting, and fair communication. Many people see reduced harassment, removals of unverified items, or better settlement outcomes.</p>
-      </details>
     </section>
   </main>
 
@@ -227,66 +191,45 @@
     </div>
   </footer>
 
+  <!-- Upsell Modal -->
   <div id="upsellModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="upsellTitle">
     <div class="box">
       <h3 id="upsellTitle" class="section-title" style="margin-top:0">Wait — get the Complete Kit for <span style="color:var(--danger)">$9 more</span></h3>
-      <p class="sub">Upgrade now for $28.97 (Reg. $57.94). You’ll get all 7 letters, fillable PDFs, and the certified‑mail online guide.</p>
+      <p class="sub">Upgrade now for $28.97 (Reg. $57.94). You’ll get all 7 letters, fillable PDFs, and the certified-mail online guide.</p>
       <div class="actions">
         <a class="btn" id="upsellYes" href="#">Yes, upgrade me — $28.97</a>
         <button class="btn outline" id="upsellNo">No thanks, keep Starter</button>
       </div>
-      <p class="hint">This one‑time upgrade is only on this page.</p>
+      <p class="hint">This one-time upgrade is only on this page.</p>
     </div>
   </div>
 
-  <!-- Stripe Checkout Modal (HTML) -->
-  <div id="checkoutModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,.6); place-items:center; z-index:200;">
-    <div style="background:#fff; border-radius:16px; width:min(520px,92vw); padding:18px; box-shadow:0 20px 60px rgba(2,6,23,.25)">
+  <!-- Stripe Checkout Modal -->
+  <div id="checkoutModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);place-items:center;z-index:200;">
+    <div style="background:#fff;border-radius:16px;width:min(520px,92vw);padding:18px;box-shadow:0 20px 60px rgba(2,6,23,.25)">
       <h3 style="margin:0 0 8px">Secure Checkout</h3>
       <div id="payment-element"></div>
-      <button id="payNow" class="btn" style="margin-top:12px; width:100%">Pay</button>
-      <button id="closeCheckout" class="btn outline" style="margin-top:8px; width:100%">Cancel</button>
+      <button id="payNow" class="btn" style="margin-top:12px;width:100%">Pay</button>
+      <button id="closeCheckout" class="btn outline" style="margin-top:8px;width:100%">Cancel</button>
       <div id="payMsg" class="hint" style="margin-top:8px"></div>
     </div>
   </div>
 
-  <!-- TikTok Pixel placeholder -->
-  <!-- <script> !function(w,d,t){/* your TT pixel here */}(); </script> -->
   <script src="https://js.stripe.com/v3/"></script>
-
   <script>
-    // UTIL: qs helper
-    const $ = sel => document.querySelector(sel);
-
-    // Year
+    // Helpers / year
+    const $ = s => document.querySelector(s);
     $('#yr').textContent = new Date().getFullYear();
 
-    // STEP 1: Lead form
-    const leadForm = $('#leadForm');
-    const leadSuccess = $('#leadSuccess');
-    const offer = $('#offer');
-    const freeLink = $('#freeLink');
+    // Free letter link (served from your own domain)
+    const FREE_LETTER_URL = '/downloads/Cease_and_Desist_Debt_Collection_Letter.pdf';
 
-    // TODO: Replace this with your actual free letter URL
-   const FREE_LETTER_URL = '/downloads/Cease_and_Desist_Debt_Collection_Letter.pdf';
-
-    // Replace with your actual checkout links (you can paste **Gumroad/Payhip** product links here too)
-    const STRIPE_STARTER = 'https://buy.stripe.com/YOUR_STARTER_LINK';
-    const STRIPE_FULL = 'https://buy.stripe.com/YOUR_FULL_LINK';
-
-    // 🔌 ZAPIER/MAKE WEBHOOK to auto‑email the free letter
-    // Create a Zap with trigger "Webhooks by Zapier → Catch Hook" and paste the URL below
-    // Or use Make.com/IFTTT – any inbound webhook works the same
-    // 🔌 MAILCHIMP (client-side, no backend)
-    // Convert your Mailchimp embed action URL to JSONP: .../subscribe/post-json?u=YOUR_U&id=YOUR_ID&c=?
- const MAILCHIMP_JSONP_URL =
-  'https://app.us5.list-manage.com/subscribe/post-json?u=f2ebf5b6d3307d2eb64af59c1&id=22602bf440&c=?';
-
+    // Mailchimp (JSONP)
+    const MAILCHIMP_JSONP_URL = 'https://app.us5.list-manage.com/subscribe/post-json?u=f2ebf5b6d3307d2eb64af59c1&id=22602bf440&c=?';
     function subscribeMailchimp(email){
       return new Promise((resolve)=>{
-        if(!MAILCHIMP_JSONP_URL.includes('list-manage.com')) return resolve({result:'skipped'});
         const cb = 'mc_cb_' + Math.random().toString(36).slice(2);
-        const s = document.createElement('script');
+        const s  = document.createElement('script');
         const url = MAILCHIMP_JSONP_URL.replace('c=?','c='+cb) + '&EMAIL=' + encodeURIComponent(email);
         window[cb] = (data)=>{ try{ delete window[cb]; document.body.removeChild(s);}catch{} resolve(data||{}); };
         s.src = url; s.onerror = ()=>{ try{ delete window[cb]; document.body.removeChild(s);}catch{} resolve({result:'error'}); };
@@ -295,220 +238,82 @@
       });
     }
 
-    function showOffer(){ offer.style.display='block'; document.querySelector('#offer').scrollIntoView({behavior:'smooth'}); }
+    // Lead magnet
+    const leadForm = $('#leadForm'), leadSuccess = $('#leadSuccess'), offer = $('#offer'), freeLink = $('#freeLink');
+    function showOffer(){ offer.style.display = 'block'; offer.scrollIntoView({behavior:'smooth'}); }
 
-    if(leadForm){
-      leadForm.addEventListener('submit', (e)=>{
-        e.preventDefault();
-        const email = (document.getElementById('email').value||'').trim();
-        if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
-          alert('Please enter a valid email.'); return;
-        }
-        localStorage.setItem('dp_email', email);
-        leadForm.style.display='none';
-        leadSuccess.style.display='block';
-        freeLink.href = FREE_LETTER_URL;
-              // open in a new tab so user stays on site
-              try{ freeLink.setAttribute('target','_blank'); freeLink.setAttribute('rel','noopener'); }catch(e){}
-              // Fallback for browsers that ignore target on programmatic set
-              freeLink.addEventListener('click', function(e){
-                if(!FREE_LETTER_URL) return;
-                // If the link is a Google Drive 'view' URL, it will still open in a new tab
-                // If you switch to the direct download format (uc?export=download&id=...), it will trigger download in the new tab
-              }, { once: true });
-        // Auto-open the PDF in a new tab so the user gets it instantly
-        /* auto-open removed: require click so email is captured first */
-        startCountdown();
-        showOffer();
-        // Send the lead to your webhook to trigger the email delivery
-        try {
-          subscribeMailchimp(email);
-        } catch(err) { /* fail silently, user still gets local download */ }
-      })
-    }
+    leadForm?.addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      const email = ($('#email').value||'').trim();
+      if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ alert('Please enter a valid email'); return; }
+      localStorage.setItem('dp_email', email);
+      leadForm.style.display='none'; leadSuccess.style.display='block';
+      freeLink.href = FREE_LETTER_URL; freeLink.setAttribute('target','_blank'); freeLink.setAttribute('rel','noopener');
+      startCountdown(); showOffer();
+      try{ subscribeMailchimp(email); }catch{}
+    });
 
-    // COUNTDOWN (15 minutes per user, persists in localStorage)
-    const TIMER_KEY = 'dp_deadline';
-    function startCountdown(){
-      let deadline = localStorage.getItem(TIMER_KEY);
-      const now = Date.now();
-      if(!deadline || now > +deadline){
-        deadline = now + 15*60*1000; // 15 minutes
-        localStorage.setItem(TIMER_KEY, deadline);
-      }
-      const tEls = [document.getElementById('timerA'), document.getElementById('timerB')];
-      function tick(){
-        const ms = +deadline - Date.now();
-        if(ms <= 0){ tEls.forEach(el=> el && (el.textContent='00:00')); return; }
-        const m = Math.floor(ms/60000).toString().padStart(2,'0');
-        const s = Math.floor((ms%60000)/1000).toString().padStart(2,'0');
-        tEls.forEach(el=> el && (el.textContent=`${m}:${s}`));
-        requestAnimationFrame(()=> setTimeout(tick, 250));
-      }
-      tick();
-    }
-
-    // If user already entered email before, reveal offer and resume timer
     if(localStorage.getItem('dp_email')){
-      if(leadForm){ leadForm.style.display='none'; leadSuccess.style.display='block'; freeLink.href = FREE_LETTER_URL; }
-      offer.style.display='block'; startCountdown();
+      leadForm?.style && (leadForm.style.display='none'); leadSuccess.style.display='block'; freeLink.href = FREE_LETTER_URL;
+      showOffer(); startCountdown();
     }
 
-    // Update buy links with email as query for tracking
-    function tracked(href){
-      const email = encodeURIComponent(localStorage.getItem('dp_email')||'');
-      if(!email) return href;
-      const url = new URL(href);
-      url.searchParams.set('buyer_email', (localStorage.getItem('dp_email')||''));
-      return url.toString();
+    // Countdown (15 mins)
+    const TIMER_KEY='dp_deadline';
+    function startCountdown(){
+      let dl = +localStorage.getItem(TIMER_KEY); const now = Date.now();
+      if(!dl || now>dl){ dl = now + 15*60*1000; localStorage.setItem(TIMER_KEY, dl); }
+      const els=[$('#timerA'),$('#timerB')];
+      (function tick(){
+        const ms = dl - Date.now(); if(ms<=0){ els.forEach(e=>e&&(e.textContent='00:00')); return; }
+        const m=String(Math.floor(ms/60000)).padStart(2,'0'), s=String(Math.floor((ms%60000)/1000)).padStart(2,'0');
+        els.forEach(e=>e&&(e.textContent=`${m}:${s}`)); requestAnimationFrame(()=>setTimeout(tick,250));
+      })();
     }
 
-    const buyStarter = document.getElementById('buyStarter');
-    const buyFull = document.getElementById('buyFull');
-    const upsellModal = document.getElementById('upsellModal');
-    const upsellYes = document.getElementById('upsellYes');
-    const upsellNo = document.getElementById('upsellNo');
+    // Upsell modal logic
+    const upsellModal=$('#upsellModal');
+    $('#buyStarter')?.addEventListener('click',(e)=>{ e.preventDefault(); upsellModal.style.display='grid'; });
+    $('#upsellNo')?.addEventListener('click',(e)=>{ e.preventDefault(); upsellModal.style.display='none'; openCheckout('starter'); });
+    $('#upsellYes')?.addEventListener('click',(e)=>{ e.preventDefault(); upsellModal.style.display='none'; openCheckout('full'); });
+    upsellModal?.addEventListener('click',(e)=>{ if(e.target===upsellModal) upsellModal.style.display='none'; });
+    $('#buyFull')?.addEventListener('click',(e)=>{ e.preventDefault(); openCheckout('full'); });
 
-    // Set initial hrefs
-    function setLinks(){
-      buyStarter?.setAttribute('data-href', STRIPE_STARTER);
-      buyFull?.setAttribute('href', tracked(STRIPE_FULL));
-      upsellYes?.setAttribute('href', tracked(STRIPE_FULL));
+    // Smooth-scroll for nav anchors
+    document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',(e)=>{const id=a.getAttribute('href'),el=document.querySelector(id);if(el){e.preventDefault();el.scrollIntoView({behavior:'smooth'});}}));
+
+    // ---------- STRIPE CHECKOUT ----------
+    const STRIPE_PUBLISHABLE_KEY = 'pk_test_51Rpcep2NAZdGyvKDjXJvJ2gSePQ2bRh9zwfnLfyyosSa317MW8liwlPvVbCk5v5YbkdnnRexDBUNCwjASG3zYqGb00Ma3raQs4';
+    const SITE_ORIGIN = 'https://cooldown-system.vercel.app'; // change to your custom domain later
+
+    const checkoutModalEl = $('#checkoutModal'); const payNowBtn = $('#payNow'); const closeCheckoutBtn = $('#closeCheckout');
+    const payMsgEl = $('#payMsg'); const paymentContainer = $('#payment-element');
+    let stripe, elements, clientSecret, selectedProduct='starter', isPaying=false;
+
+    async function openCheckout(product){
+      selectedProduct = product; payMsgEl.textContent=''; paymentContainer.innerHTML=''; isPaying=false; payNowBtn.disabled=false; checkoutModalEl.style.display='grid';
+      try{
+        const r = await fetch('/api/create-intent',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({product})});
+        if(!r.ok) throw new Error('Server error starting checkout.');
+        const data = await r.json(); if(!data.clientSecret) throw new Error('Missing client secret');
+        clientSecret = data.clientSecret; stripe = Stripe(STRIPE_PUBLISHABLE_KEY);
+        elements = stripe.elements({clientSecret}); elements.create('payment').mount('#payment-element');
+      }catch(err){ payMsgEl.textContent = err.message || 'Network error. Please try again.'; }
     }
-    setLinks();
 
-    // One-time upsell modal when clicking Starter
-    buyStarter?.addEventListener('click', (e)=>{
-      e.preventDefault();
-      upsellModal.style.display='grid';
-    });
-
-    upsellNo?.addEventListener('click', (e)=>{
-      e.preventDefault();
-      upsellModal.style.display='none';
-      // Open Stripe checkout for the Starter kit
-      openCheckout('starter');
-    })
-
-    upsellModal?.addEventListener('click', (e)=>{
-      if(e.target === upsellModal){ upsellModal.style.display='none'; }
-    })
-
-    // Nav sticky CTA smooth scroll
-    document.querySelectorAll('a[href^="#"]').forEach(a=>{
-      a.addEventListener('click', (e)=>{
-        const id = a.getAttribute('href');
-        const el = document.querySelector(id);
-        if(el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth'}); }
-      })
-    })
-  </script>
-
- <!-- Stripe Checkout Modal logic -->
-<script>
-  // ✅ your publishable TEST key (safe in browser)
-  const STRIPE_PUBLISHABLE_KEY = 'pk_test_51Rpcep2NAZdGyvKDjXJvJ2gSePQ2bRh9zwfnLfyyosSa317MW8liwlPvVbCk5v5YbkdnnRexDBUNCwjASG3zYqGb00Ma3raQs4';
-
-  // ✅ force Stripe to return to the stable domain that has thank-you.html
-  const SITE_ORIGIN = 'https://cooldown-system.vercel.app'; // change to your custom domain later
-
-  const checkoutModalEl   = document.getElementById('checkoutModal');
-  const payNowBtn         = document.getElementById('payNow');
-  const closeCheckoutBtn  = document.getElementById('closeCheckout');
-  const payMsgEl          = document.getElementById('payMsg');
-  const paymentContainer  = document.getElementById('payment-element');
-
-  let stripe, elements, clientSecret, selectedProduct = 'starter';
-  let isPaying = false;
-
-  async function openCheckout(product){
-    selectedProduct = product;
-    payMsgEl.textContent = '';
-    paymentContainer.innerHTML = '';
-    isPaying = false;
-    payNowBtn.disabled = false;
-
-    checkoutModalEl.style.display = 'grid';
-
-    try{
-      const r = await fetch('/api/create-intent', {
-        method:'POST',
-        headers:{ 'Content-Type':'application/json' },
-        body: JSON.stringify({ product })
+    async function confirmPay(){
+      if(isPaying || !stripe) return; isPaying=true; payNowBtn.disabled=true; payNowBtn.textContent='Processing…'; payMsgEl.textContent='';
+      const result = await stripe.confirmPayment({
+        elements,
+        confirmParams: { return_url: 'https://cooldown-system.vercel.app/thank-you.html?p=' + selectedProduct }
       });
-      if(!r.ok){
-        const txt = await r.text();
-        throw new Error('Server error starting checkout. ' + txt);
-      }
-      const data = await r.json();
-      if(!data.clientSecret){ throw new Error('Missing client secret.'); }
-
-      clientSecret = data.clientSecret;
-
-      // Init Stripe.js + Payment Element
-      stripe = Stripe(STRIPE_PUBLISHABLE_KEY);
-      elements = stripe.elements({ clientSecret });
-      const paymentEl = elements.create('payment');
-      paymentEl.mount('#payment-element');
-
-    } catch(err){
-      payMsgEl.textContent = err.message || 'Network error. Please try again.';
+      if(result?.error){ payMsgEl.textContent = result.error.message || 'Payment error. Try another method.'; isPaying=false; payNowBtn.disabled=false; payNowBtn.textContent='Pay'; }
     }
-  }
 
-  async function confirmPay(){
-    if(isPaying || !stripe) return;
-    isPaying = true;
-    payNowBtn.disabled = true;
-    payNowBtn.textContent = 'Processing…';
-    payMsgEl.textContent = '';
+    function closeCheckout(){ checkoutModalEl.style.display='none'; payMsgEl.textContent=''; paymentContainer.innerHTML=''; elements=null; stripe=null; isPaying=false; payNowBtn.disabled=false; payNowBtn.textContent='Pay'; }
 
-    const result = await stripe.confirmPayment({
-      elements,
-      confirmParams: {
-        // 🔁 always send users back to the domain that definitely has thank-you.html
-        return_url: SITE_ORIGIN + '/thank-you.html?p=' + selectedProduct
-      }
-      // Note: no redirect: 'if_required' here; we want Stripe to handle 3DS/redirects.
-    });
-
-    if(result?.error){
-      payMsgEl.textContent = result.error.message || 'Payment error. Try another method.';
-      isPaying = false;
-      payNowBtn.disabled = false;
-      payNowBtn.textContent = 'Pay';
-    }
-  }
-
-  function closeCheckout(){
-    checkoutModalEl.style.display = 'none';
-    payMsgEl.textContent = '';
-    paymentContainer.innerHTML = '';
-    try{ elements?.update({}); }catch(e){}
-    elements = null;
-    stripe = null;
-    isPaying = false;
-    payNowBtn.disabled = false;
-    payNowBtn.textContent = 'Pay';
-  }
-
-  payNowBtn?.addEventListener('click', confirmPay);
-  closeCheckoutBtn?.addEventListener('click', closeCheckout);
-
-  // Hook buttons to open Stripe checkout
-  document.getElementById('buyFull')?.addEventListener('click', (e)=>{ e.preventDefault(); openCheckout('full'); });
-  document.getElementById('upsellYes')?.addEventListener('click', (e)=>{ e.preventDefault(); document.getElementById('upsellModal').style.display='none'; openCheckout('full'); });
-
-  // Starter via "No thanks"
-  (function(){
-    const noBtn = document.getElementById('upsellNo');
-    if(!noBtn) return;
-    const clone = noBtn.cloneNode(true);
-    noBtn.parentNode.replaceChild(clone, noBtn);
-    clone.addEventListener('click', (e)=>{
-      e.preventDefault();
-      document.getElementById('upsellModal').style.display='none';
-      openCheckout('starter');
-    });
-  })();
-</script>
+    payNowBtn?.addEventListener('click', confirmPay);
+    closeCheckoutBtn?.addEventListener('click', closeCheckout);
+  </script>
+</body>
+</html>
